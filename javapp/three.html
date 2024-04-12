@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASSWORD GENERATOR</title>
+    <link rel="stylesheet" href="three.css">
+</head>
+<body>
+    <div class="container">
+       <h1>GENERATE<br><span>RANDOM PASSWORD</span></h1>
+      <div class="display">
+         <input type="text" id="password" placeholder="Password">
+         <img src="copy.png">
+      </div>
+     <button1 onclick="createpass()"><img src="generate.png">GENERATE</button1>
+     <button2 onclick="checkpass()">CHECK THE PASSWORD</button2>
+    </div>
+    
+</body>
+<script>
+    const passwordbox = document.getElementById("password");
+    const length = 12;
+    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowercase = "abcdefghijklmnopqrstuvwxyz";
+    const number = "1234567890";
+    const symbol = "!@#$%^&*";
+    const allchars = uppercase + lowercase + number + symbol;
+
+    function createpass() {
+        let password = "";
+        password += uppercase[Math.floor(Math.random() * uppercase.length)];
+        password += lowercase[Math.floor(Math.random() * lowercase.length)];
+        password += number[Math.floor(Math.random() * number.length)];
+        password += symbol[Math.floor(Math.random() * symbol.length)];
+
+        while (length > password.length) {
+            password += allchars[Math.floor(Math.random() * allchars.length)];
+        }
+        passwordbox.value = password;
+    }
+    function checkpass() {
+            const password = passwordbox.value; // Get the password from the input field
+            if (password.length === length) {
+                alert("strong passcode" + password.length);
+            } else {
+                alert("####weak passcode 404####");
+                console.warn("weak");
+            }
+        }
+
+</script>
+
+</html>
